@@ -125,10 +125,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 250px;
+  gap: 20px;
+  width: 400px;
 }
 
 .info-box img {
-  width: 140px;
+  width: 160px;
   margin-bottom: 10px;
+}
+
+#info-divider {
+  width: 240px;
+  height: 3px;
+  border-radius: 20px;
+  background-color: #019c78;
+}
+
+.info-box p {
+  color: rgb(49, 49, 49);
+  font-size: 18px;
+  font-weight: 600;
 }
