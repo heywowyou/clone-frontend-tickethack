@@ -2,7 +2,6 @@
   font-family: Arial, sans-serif;
   box-sizing: border-box;
   text-decoration: none;
-
 }
 
 body {
@@ -119,6 +118,7 @@ body {
 }
 
 .info-box {
+  position: relative;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -129,6 +129,8 @@ body {
   justify-content: center;
   gap: 20px;
   width: 400px;
+  overflow-y: auto;
+  max-height: 400px;
 }
 
 .info-box img {
@@ -144,7 +146,43 @@ body {
 }
 
 .info-box p {
+  /* padding-top: 10px; */
   color: rgb(49, 49, 49);
   font-size: 18px;
   font-weight: 600;
+}
+
+.trip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 93%;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #f5eeee;
+  font-size: 5px;
+}
+
+.trip p {
+  font-size: 13px;
+  display: flex;
+}
+
+.btn {
+  background-color: #459e85;
+  color: white;
+  padding: 10px;
+  margin-left: 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.trip-infos {
+  display: flex;
+  gap: 5px;
+  margin-left: 5px;
+  padding: 3px;
 }

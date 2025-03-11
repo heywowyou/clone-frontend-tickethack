@@ -1,61 +1,63 @@
-const departureInput = document.getElementById('departureInput');
-const arrivalInput = document.getElementById('arrivalInput');
-const dateInput = document.getElementById('dateInput');
-const searchButton = document.getElementById('search');
- const infoBox = document.querySelector('.info-box'); 
-
-
-
-
-
+const departureInput = document.getElementById("departureInput");
+const arrivalInput = document.getElementById("arrivalInput");
+const dateInput = document.getElementById("dateInput");
+const searchButton = document.getElementById("search");
+const infoBox = document.querySelector(".info-box");
 
 function getTrips() {
-  
-    if (departureInput.value === '' || arrivalInput.value === '' || dateInput.value === '') {
-       
-        if (infoBox) {
-            infoBox.innerHTML = `<img src="images/notFound.png" alt="Not Found Icon" />
+  if (
+    departureInput.value === "" ||
+    arrivalInput.value === "" ||
+    dateInput.value === ""
+  ) {
+    if (infoBox) {
+      infoBox.innerHTML = `<img src="images/notFound.png" alt="Not Found Icon" />
              <div id="info-divider"></div>
                                 <p>No trips found.</p>`;
-        }
-        return;
     }
-  
+    return;
+  }
 
-
-
-    fetch(`http://localhost:3000/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`)
+  fetch(
+    `http://localhost:3000/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`
+  )
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
 
-
-      if (data.length === 0) {
+      if (data.message === "No trips found.") {
         infoBox.innerHTML = `
             <img src="images/notFound.png" alt="Not Found Icon" />
             <div id="info-divider"></div>
             <p>No trips found.</p>
-        `;} else {
-           
-            infoBox.innerHTML = `<h3>Résultats :</h3>`;
-            data.forEach(trip => {
-                infoBox.innerHTML += `
+        `;
+      } else {
+        document.querySelector(".info-box").scrollTop = 0;
+        data.trips.forEach((trip) => {
+          const tripDate = new Date(trip.date);
+          infoBox.innerHTML += `
                     <div class="trip">
-                        <p><strong>Départ :</strong> ${trip.departure}</p>
-                        <p><strong>Arrivée :</strong> ${trip.arrival}</p>
-                        <p><strong>Date :</strong> ${trip.date}</p>
+                    <div class="trip-infos">
+                        <p> ${trip.departure}  </p>
+                        <p> > </p>
+                        <p> ${trip.arrival} </p>
+                    </div>
+
+                    <div class="trip-infos">
+                       <p>${tripDate.getHours()}:${tripDate.getMinutes()}</p>
+                     </div> 
+                    <div class="trip-infos">
+                        <p> ${trip.price}€</p>
+                    </div>
+                        <button class="btn">Book</button>
                     </div>
                 `;
-            });
-        }
-    
-
-
-
+        });
+      }
     })
     .catch((error) => {
       console.error(error);
     });
 }
 
-searchButton.addEventListener('click', getTrips)
+searchButton.addEventListener("click", getTrips);
