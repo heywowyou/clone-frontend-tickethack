@@ -158,7 +158,7 @@ body {
   align-items: center;
   gap: 10px;
   width: 93%;
-  padding: 8px;
+  /* padding: 2px; */
   border-radius: 5px;
   background-color: #f5eeee;
   font-size: 5px;
@@ -185,4 +185,8 @@ body {
   gap: 5px;
   margin-left: 5px;
   padding: 4px;
+}
+
+#dateInput {
+  cursor: pointer;
 }
