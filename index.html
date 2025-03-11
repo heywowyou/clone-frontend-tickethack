@@ -7,13 +7,42 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="header">
-      <div id="logo">Tickethack</div>
-      <div id="navigation-block">
-        <div id="cart">Cart</div>
-        <div id="bookings">Bookings</div>
+    <div class="navbar">
+      <div class="logo">Tickethack</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Bookings</a></li>
+        </ul>
       </div>
     </div>
+
+    <div class="main-content">
+      <div class="intro">
+        <h1>Explore the world effortlessly by train!</h1>
+        <p>
+          Compare, book and enjoy cheap prices for train tickets: your journey
+          starts on Tickethack.
+        </p>
+      </div>
+
+      <div class="search-container">
+        <div class="search-box">
+          <div class="input-group">
+            <input type="text" placeholder="Departure" />
+            <input type="text" placeholder="Arrival" />
+          </div>
+          <input type="date" />
+          <button>Search</button>
+        </div>
+
+        <div class="info-box">
+          <img src="images/train.png" alt="Train Icon" />
+          <p>It's time to book your future trip.</p>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
