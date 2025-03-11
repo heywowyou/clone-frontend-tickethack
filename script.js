@@ -2,24 +2,7 @@ const departureInput = document.getElementById('departureInput');
 const arrivalInput = document.getElementById('arrivalInput');
 const dateInput = document.getElementById('dateInput');
 const searchButton = document.getElementById('search');
-
-searchButton.addEventListener('click', () => {
-    console.log('bonjour');
-
-    if (departureInput.value === '' || arrivalInput.value === '' || dateInput.value === '') {
-        const infoBox = document.querySelector('.info-box'); // Sélectionne le premier élément avec la classe "info-box"
-        if (infoBox) {
-            infoBox.innerHTML = `<img src="images/notFound.png" alt="Not Found Icon" />
-                                <p>No trips found.</p>`;
-        }
-    }
-});
-
-
-
-
-
-
+ const infoBox = document.querySelector('.info-box'); 
 
 
 
@@ -27,12 +10,45 @@ searchButton.addEventListener('click', () => {
 
 
 function getTrips() {
-  fetch('http://localhost:3000/trips')
+  
+    if (departureInput.value === '' || arrivalInput.value === '' || dateInput.value === '') {
+       
+        if (infoBox) {
+            infoBox.innerHTML = `<img src="images/notFound.png" alt="Not Found Icon" />
+             <div id="info-divider"></div>
+                                <p>No trips found.</p>`;
+        }
+        return;
+    }
+  
+
+
+
+    fetch(`http://localhost:3000/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
 
-        
+
+      if (data.length === 0) {
+        infoBox.innerHTML = `
+            <img src="images/notFound.png" alt="Not Found Icon" />
+            <div id="info-divider"></div>
+            <p>No trips found.</p>
+        `;} else {
+           
+            infoBox.innerHTML = `<h3>Résultats :</h3>`;
+            data.forEach(trip => {
+                infoBox.innerHTML += `
+                    <div class="trip">
+                        <p><strong>Départ :</strong> ${trip.departure}</p>
+                        <p><strong>Arrivée :</strong> ${trip.arrival}</p>
+                        <p><strong>Date :</strong> ${trip.date}</p>
+                    </div>
+                `;
+            });
+        }
+    
 
 
 
@@ -41,3 +57,5 @@ function getTrips() {
       console.error(error);
     });
 }
+
+searchButton.addEventListener('click', getTrips)
