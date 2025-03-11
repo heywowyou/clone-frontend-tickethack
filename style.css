@@ -2,6 +2,7 @@
   font-family: Arial, sans-serif;
   box-sizing: border-box;
   text-decoration: none;
+
 }
 
 body {
@@ -126,24 +127,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  width: 400px;
+  width: 250px;
 }
 
 .info-box img {
-  width: 160px;
+  width: 140px;
   margin-bottom: 10px;
-}
-
-#info-divider {
-  width: 240px;
-  height: 3px;
-  border-radius: 20px;
-  background-color: #019c78;
-}
-
-.info-box p {
-  color: rgb(49, 49, 49);
-  font-size: 18px;
-  font-weight: 600;
 }
