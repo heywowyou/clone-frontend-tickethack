@@ -32,6 +32,7 @@ function getTrips() {
             <p>No trips found.</p>
         `;
       } else {
+        infoBox.innerHTML = "";
         document.querySelector(".info-box").scrollTop = 0;
         data.trips.forEach((trip) => {
           const tripDate = new Date(trip.date);
