@@ -50,7 +50,7 @@ function getTrips() {
                     <div class="trip-infos">
                         <p> ${trip.price}€</p>
                     </div>
-                        <button class="btn">Book</button>
+                        <button class="book-btn">Book</button>
                     </div>
                 `;
         });
@@ -59,6 +59,38 @@ function getTrips() {
     .catch((error) => {
       console.error(error);
     });
+}
+
+// Get user session id
+async function getSessionId() {
+  const response = await fetch("http://localhost:3000/users/session");
+  const data = await response.json();
+
+  if (data && data.sessionId) {
+    return data.sessionId;
+  } else {
+    console.error("No session ID found.");
+    return null;
+  }
+}
+
+// Add trip to user cart
+async function addToCart(tripId) {
+  const sessionId = await getSessionId();
+  if (!sessionId) {
+    alert("No active session found.");
+    return;
+  }
+
+  const response = await fetch(`http://localhost:3000/${sessionId}/cart`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ tripId }),
+  });
+
+  const data = await response.json();
 }
 
 searchButton.addEventListener("click", getTrips);
