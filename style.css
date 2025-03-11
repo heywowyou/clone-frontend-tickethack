@@ -2,7 +2,6 @@
   font-family: Arial, sans-serif;
   box-sizing: border-box;
   text-decoration: none;
-
 }
 
 body {
@@ -55,8 +54,9 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: black;
+  color: rgb(49, 49, 49);
   font-size: 16px;
+  letter-spacing: 1px;
 }
 
 .nav-links a:hover {
@@ -146,5 +146,4 @@ body {
 .info-box p {
   color: rgb(49, 49, 49);
   font-size: 18px;
-  font-weight: 600;
 }
