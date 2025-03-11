@@ -131,3 +131,18 @@
   font-size: 20px;
   margin-bottom: 10px;
 }
+
+#btnConnexion {
+  background-color: #459e85;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#btnConnexion:hover {
+  background-color: #428a75;
+}
