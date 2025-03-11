@@ -185,3 +185,7 @@ body {
   margin-left: 5px;
   padding: 4px;
 }
+
+#dateInput {
+  cursor: pointer;
+}
