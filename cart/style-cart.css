@@ -155,7 +155,7 @@
   background-color: #00153e;
   color: white;
   width: 50%;
-  border-radius: 10px 10px 0 0;
+  border-radius: 0 0 10px 10px;
 }
 
 .total p {
