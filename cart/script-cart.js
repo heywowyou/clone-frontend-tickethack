@@ -71,11 +71,14 @@ function displayCart() {
            <p>${trip.arrival}</p>
        </div>
 
-        <p>${tripDate.getHours().toString().padStart(2, "0")}:${tripDate
+        <div class="date">
+          <p>${tripDate.getHours().toString().padStart(2, "0")}:${tripDate
         .getMinutes()
         .toString()
         .padStart(2, "0")}</p>
-       <p>${trip.price}€</p>
+        </div>
+
+       <p id="price">${trip.price}€</p>
        <button class="remove-btn" data-trip-id="${trip._id}">Remove</button>
             </div>
             
