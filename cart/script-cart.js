@@ -58,13 +58,13 @@ function displayCart() {
         <h2>Why not plan a trip?</h2>
       </div>`;
   } else {
+    document.querySelector(".cart").innerHTML = "";
     document.querySelector(".mainContainer").innerHTML = `
     
-    <h1 id="title">Your cart</h1>
-    <div class="cart"> 
     
+    <div class="cart"> 
+    <h1 id="title">My cart</h1>
     </div>`;
-    document.querySelector(".cart").innerHTML = "";
     cart.forEach((trip) => {
       const tripDate = new Date(trip.date);
       document.querySelector(".cart").innerHTML += `  
@@ -87,10 +87,22 @@ function displayCart() {
        <p id="price">${trip.price}€</p>
        <button class="remove-btn" data-trip-id="${trip._id}">X</button>
             </div>
+
+  
             
             
             
             `;
     });
+    document.querySelector(".cart").innerHTML += `
+    <div class="purchase">
+            <div class="total">
+              <p>Total:</p>
+              <p id="total">${trip.price}</p>
+            </div>
+
+            <button class="purchase-btn">Purchase</button>  
+
+            </div>`;
   }
 }
