@@ -79,3 +79,34 @@
   font-weight: 300;
   padding: 10px;
 }
+
+.trip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5eeee;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.trip p {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.remove-btn {
+  background-color: #ff0000;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.remove-btn:hover {
+  background-color: #e60000;
+}
