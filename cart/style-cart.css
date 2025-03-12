@@ -155,7 +155,7 @@
   background-color: #00153e;
   color: white;
   width: 50%;
-  padding: 50px;
+  padding: 40px;
   border-radius: 0 0 10px 10px;
   display: flex;
   justify-content: space-between;
@@ -171,4 +171,18 @@
 .total {
   display: flex;
   justify-content: center;
+}
+
+.purchase-btn {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #459e85;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.purchase-btn:hover {
+  background-color: #428a75;
 }
