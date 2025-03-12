@@ -21,14 +21,21 @@ async function getTrips() {
               <p>No trips found.</p>
           `;
     } else {
-      infoBox.innerHTML = ""; // Clear previous results
-      infoBox.scrollTop = 0; // Ensure new content starts at the top
+      infoBox.innerHTML = "";
+      infoBox.scrollTop = 0;
 
       data.trips.forEach((trip) => {
         const tripDate = new Date(trip.date);
         const tripElement = document.createElement("div");
         tripElement.classList.add("trip");
-        tripElement.style.position = "relative"; // Fix potential positioning issues
+        tripElement.style.display = "flex";
+        tripElement.style.justifyContent = "space-between";
+        tripElement.style.alignItems = "center";
+        tripElement.style.marginBottom = "10px";
+        tripElement.style.padding = "10px";
+        tripElement.style.border = "1px solid #ccc";
+        tripElement.style.borderRadius = "5px";
+        tripElement.style.backgroundColor = "#fff";
 
         tripElement.innerHTML = `
                   <div class="trip-infos">
@@ -56,7 +63,6 @@ async function getTrips() {
         infoBox.appendChild(tripElement);
       });
 
-      // Ensure visibility
       infoBox.style.display = "block";
       infoBox.scrollTop = 0;
 
