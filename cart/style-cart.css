@@ -160,4 +160,11 @@
 
 .total p {
   color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.total {
+  display: flex;
+  justify-content: center;
 }
