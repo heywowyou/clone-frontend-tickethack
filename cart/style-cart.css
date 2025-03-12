@@ -58,6 +58,7 @@
   height: 100vh;
   background-color: #eff2f1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -153,4 +154,5 @@
 .purchase {
   background-color: #00153e;
   color: white;
+  width: 50%;
 }
