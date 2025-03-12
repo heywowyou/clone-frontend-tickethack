@@ -156,12 +156,15 @@
   color: white;
   width: 50%;
   border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .total p {
   color: white;
   font-size: 20px;
-  padding: 10px;
+  padding: 5px;
 }
 
 .total {
