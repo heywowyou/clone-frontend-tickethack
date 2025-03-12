@@ -29,47 +29,37 @@ async function getBookings() {
 
     if (!data.bookings || data.bookings.length === 0) {
       bookingContainer.innerHTML = `
-                <h2>No bookings yet.</h2>
-                <h2>Why not plan a trip?</h2>
-            `;
+        <h2>No bookings yet.</h2>
+        <h2>Why not plan a trip?</h2>
+      `;
       return;
     }
 
+    // Add a heading for the bookings section
     bookingContainer.innerHTML = "<h2>Your Bookings:</h2>";
 
     data.bookings.forEach((trip) => {
       const tripDate = new Date(trip.date);
+
+      // Create the trip container and apply the .trip class
       const tripElement = document.createElement("div");
       tripElement.classList.add("trip");
 
-      tripElement.style.display = "flex";
-      tripElement.style.justifyContent = "space-between";
-      tripElement.style.alignItems = "center";
-      tripElement.style.marginBottom = "10px";
-      tripElement.style.padding = "10px";
-      tripElement.style.border = "1px solid #ccc";
-      tripElement.style.borderRadius = "5px";
-      tripElement.style.backgroundColor = "#fff";
-
+      // Populate the trip container
       tripElement.innerHTML = `
-                <div class="trip-infos">
-                    <p>${trip.departure}</p>
-                    <p>→</p>
-                    <p>${trip.arrival}</p>
-                </div>
-                <div class="trip-infos">
-                    <p>${tripDate
-                      .getHours()
-                      .toString()
-                      .padStart(2, "0")}:${tripDate
-        .getMinutes()
-        .toString()
-        .padStart(2, "0")}</p>
-                </div>
-                <div class="trip-infos">
-                    <p>${trip.price} €</p>
-                </div>
-            `;
+        <div class="trip-infos">
+          <p>${trip.departure}</p>
+          <p>→</p>
+          <p>${trip.arrival}</p>
+        </div>
+        <div class="trip-infos">
+          <p>${tripDate.getHours().toString().padStart(2, "0")}:
+             ${tripDate.getMinutes().toString().padStart(2, "0")}</p>
+        </div>
+        <div class="trip-infos">
+          <p>${trip.price} €</p>
+        </div>
+      `;
 
       bookingContainer.appendChild(tripElement);
     });
