@@ -117,3 +117,34 @@ function displayCart() {
     document.querySelector(".mainContainer").appendChild(purchaseDiv);
   }
 }
+
+document
+  .querySelector(".remove-btn")
+  .addEventListener("click", async (event) => {
+    event.preventDefault();
+    const tripId = event.target.dataset.tripId;
+    const sessionId = await getSessionId();
+
+    if (!sessionId) return;
+
+    try {
+      const response = await fetch(`${url}/users/${sessionId}/cart/${tripId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log("Données de la réponse : ", data);
+
+      if (data.message === "Trip removed from cart") {
+        console.log("Trip supprimé avec succès !");
+        // Tu peux rediriger ou afficher un message de succès ici
+      } else {
+        console.error("Erreur : ", data.message);
+      }
+    } catch (error) {
+      console.error("Erreur lors de la suppression du trip", error);
+    }
+  });
