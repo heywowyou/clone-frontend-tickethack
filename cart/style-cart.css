@@ -63,6 +63,7 @@
 }
 
 .cart {
+  position: relative;
   width: 50%;
   height: auto;
   border-radius: 5px;
@@ -88,6 +89,7 @@
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  width: 80%;
 }
 
 .trip p {
