@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("Données de la réponse : ", data);
 
           if (data) {
-            return console.log("Compte créé avec succès !");
+            console.log("Compte créé avec succès !");
             // Tu peux rediriger ou afficher un message
           } else {
             console.error("Erreur : ", data.message);
