@@ -24,7 +24,7 @@ async function getTrips() {
 
     if (data.message === "No trips found.") {
       infoBox.innerHTML = `
-              <img src="images/notfound.png" alt="Not Found Icon" />
+              <img src="./images/notfound.png" alt="Not Found Icon" />
               <div id="info-divider"></div>
               <p>No trips found.</p>
           `;
