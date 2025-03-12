@@ -70,7 +70,7 @@ function displayCart() {
            <p>${trip.arrival}</p>
        </div>
 
-       <p></p>
+       <p>${trip.date}</p>
        <p>${trip.price}€</p>
        <button class="remove-btn" data-trip-id="${trip._id}">Remove</button>
             </div>
