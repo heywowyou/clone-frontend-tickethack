@@ -58,6 +58,7 @@
   height: 100vh;
   background-color: #eff2f1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -148,4 +149,40 @@
   font-size: 20px;
   margin-bottom: 20px;
   margin-top: 35px;
+}
+
+.purchase {
+  background-color: #00153e;
+  color: white;
+  width: 50%;
+  padding: 40px;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total p {
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.total {
+  display: flex;
+  justify-content: center;
+}
+
+.purchase-btn {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #459e85;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.purchase-btn:hover {
+  background-color: #428a75;
 }

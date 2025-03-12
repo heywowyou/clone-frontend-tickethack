@@ -114,6 +114,6 @@ function displayCart() {
     `;
 
     // Ajouter l'élément du total au DOM
-    document.querySelector(".cart").appendChild(purchaseDiv);
+    document.querySelector(".mainContainer").appendChild(purchaseDiv);
   }
 }
