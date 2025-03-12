@@ -120,6 +120,7 @@ function displayCart() {
 
 document.querySelector(".cart").addEventListener("click", async (event) => {
   // Vérifier si l'élément cliqué est un bouton "remove-btn"
+  console.log("supression");
   if (event.target.classList.contains("remove-btn")) {
     event.preventDefault();
     console.log("supression");
