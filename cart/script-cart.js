@@ -117,13 +117,8 @@ function displayCart() {
     document.querySelector(".mainContainer").appendChild(purchaseDiv);
   }
 
-  document.querySelector(".cart").addEventListener("click", async (event) => {
-    // Vérifier si l'élément cliqué est un bouton "remove-btn"
-    console.log("supression");
-    if (event.target.classList.contains("remove-btn")) {
-      event.preventDefault();
-      console.log("supression");
-      const tripId = event.target.dataset.tripId;
+  document.querySelectorAll(".remove-btn").forEach((button) => {
+    button.addEventListener("click", async function () {
       const sessionId = await getSessionId();
 
       if (!sessionId) return;
@@ -153,6 +148,7 @@ function displayCart() {
       } catch (error) {
         console.error("Erreur lors de la suppression du trip", error);
       }
-    }
+    });
   });
-}
+
+ 
