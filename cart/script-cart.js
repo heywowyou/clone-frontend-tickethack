@@ -71,7 +71,7 @@ async function getCartItems() {
                 }">Remove</button>
             `;
 
-      cartContainer.appendChild(tripElement);
+      cartContainer.appendChild(".mainContainer");
     });
 
     // Add total price and checkout button
