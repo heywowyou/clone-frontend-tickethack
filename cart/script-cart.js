@@ -63,7 +63,7 @@ function displayCart() {
     
     
     <div class="cart"> 
-    <h1 id="title">Your cart</h1>
+    <h1 id="title">My cart</h1>
     </div>`;
     cart.forEach((trip) => {
       const tripDate = new Date(trip.date);
