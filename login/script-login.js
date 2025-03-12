@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const data = await fetchData.json();
           console.log("Données de la réponse : ", data);
 
-          if (data.success) {
-            console.log("Compte créé avec succès !");
+          if (data) {
+            return console.log("Compte créé avec succès !");
             // Tu peux rediriger ou afficher un message
           } else {
             console.error("Erreur : ", data.message);
