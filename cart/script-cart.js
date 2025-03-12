@@ -29,8 +29,8 @@ async function getTrips() {
     const user = await fetchUser.json();
     console.log("User data:", user);
 
-    cart = user || []; // Stocke le panier
-    console.log("nv tableau; ", cart.cart);
+    cart = user.user.cart || []; // Stocke le panier
+    console.log("nv tableau; ", cart);
     displayCart(); // Met à jour l'affichage
     return cart;
   } catch (error) {
