@@ -13,6 +13,11 @@ async function getTrips() {
       !dateInput.value.trim()
     ) {
       console.log("Please enter valid departure, arrival, and date.");
+      infoBox.innerHTML = `
+              <img src="./images/notfound.png" alt="Not Found Icon" />
+              <div id="info-divider"></div>
+              <p>No trips found.</p>
+          `;
       return;
     }
     const response = await fetch(
@@ -22,30 +27,23 @@ async function getTrips() {
 
     console.log("Fetched Data:", data); // Debugging log
 
-    if (data.message === "No trips found.") {
-      infoBox.innerHTML = `
-              <img src="./images/notfound.png" alt="Not Found Icon" />
-              <div id="info-divider"></div>
-              <p>No trips found.</p>
-          `;
-    } else {
-      infoBox.innerHTML = "";
-      infoBox.scrollTop = 0;
+    infoBox.innerHTML = "";
+    infoBox.scrollTop = 0;
 
-      data.trips.forEach((trip) => {
-        const tripDate = new Date(trip.date);
-        const tripElement = document.createElement("div");
-        tripElement.classList.add("trip");
-        tripElement.style.display = "flex";
-        tripElement.style.justifyContent = "space-between";
-        tripElement.style.alignItems = "center";
-        tripElement.style.marginBottom = "10px";
-        tripElement.style.padding = "10px";
-        tripElement.style.border = "1px solid #ccc";
-        tripElement.style.borderRadius = "5px";
-        tripElement.style.backgroundColor = "#fff";
+    data.trips.forEach((trip) => {
+      const tripDate = new Date(trip.date);
+      const tripElement = document.createElement("div");
+      tripElement.classList.add("trip");
+      tripElement.style.display = "flex";
+      tripElement.style.justifyContent = "space-between";
+      tripElement.style.alignItems = "center";
+      tripElement.style.marginBottom = "10px";
+      tripElement.style.padding = "10px";
+      tripElement.style.border = "1px solid #ccc";
+      tripElement.style.borderRadius = "5px";
+      tripElement.style.backgroundColor = "#fff";
 
-        tripElement.innerHTML = `
+      tripElement.innerHTML = `
                   <div class="trip-infos">
                       <p>${trip.departure}</p>
                       <p>→</p>
@@ -56,9 +54,9 @@ async function getTrips() {
                         .getHours()
                         .toString()
                         .padStart(2, "0")}:${tripDate
-          .getMinutes()
-          .toString()
-          .padStart(2, "0")}</p>
+        .getMinutes()
+        .toString()
+        .padStart(2, "0")}</p>
                   </div>
                   <div class="trip-infos">
                       <p>${trip.price} €</p>
@@ -68,21 +66,20 @@ async function getTrips() {
                   </div>
               `;
 
-        infoBox.appendChild(tripElement);
-      });
+      infoBox.appendChild(tripElement);
+    });
 
-      infoBox.style.display = "block";
-      infoBox.scrollTop = 0;
+    infoBox.style.display = "block";
+    infoBox.scrollTop = 0;
 
-      // Add event listeners to book buttons
-      document.querySelectorAll(".book-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          const tripId = this.getAttribute("data-trip-id");
-          console.log(`Booking trip ID: ${tripId}`);
-          addToCart(tripId);
-        });
+    // Add event listeners to book buttons
+    document.querySelectorAll(".book-btn").forEach((button) => {
+      button.addEventListener("click", function () {
+        const tripId = this.getAttribute("data-trip-id");
+        console.log(`Booking trip ID: ${tripId}`);
+        addToCart(tripId);
       });
-    }
+    });
   } catch (error) {
     console.error("Error fetching trips:", error);
   }
