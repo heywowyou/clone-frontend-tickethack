@@ -110,3 +110,11 @@
 .remove-btn:hover {
   background-color: #e60000;
 }
+
+.para {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}

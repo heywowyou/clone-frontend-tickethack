@@ -64,7 +64,7 @@ function displayCart() {
             
              <div class="trip">
 
-       <div class="trip">
+       <div class="para">
            <p> ${trip.departure}</p>
            <p>→</p>
            <p>${trip.arrival}</p>
