@@ -71,7 +71,7 @@ async function getCartItems() {
                 }">Remove</button>
             `;
 
-      cartContainer.appendChild(tripElement);
+      cartContainer.appendChild(".mainContainer");
     });
 
     // Add total price and checkout button
@@ -220,7 +220,7 @@ function previousCode() {
       `;
 
         // Ajouter l'élément div au DOM
-        document.querySelector(".mainContainer").appendChild(tripDiv);
+        document.querySelector(".cart").appendChild(tripDiv);
 
         // Ajouter le prix au total
         totalPrice += trip.price;
