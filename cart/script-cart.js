@@ -60,40 +60,20 @@ function displayCart() {
   } else {
     document.querySelector(".mainContainer").innerHTML = "";
     cart.forEach((trip) => {
-      const tripDate = new Date(trip.date);
-      const tripElement = document.createElement("div");
-      tripElement.classList.add("trip");
-      tripElement.style.display = "flex";
-      tripElement.style.justifyContent = "space-between";
-      tripElement.style.alignItems = "center";
-      tripElement.style.marginBottom = "10px";
-      tripElement.style.padding = "10px";
-      tripElement.style.border = "1px solid #ccc";
-      tripElement.style.borderRadius = "5px";
-      tripElement.style.backgroundColor = "#fff";
-
-      tripElement.innerHTML = `
-                  <div class="trip-infos">
-                      <p>${trip.departure}</p>
-                      <p>→</p>
-                      <p>${trip.arrival}</p>
-                  </div>
-                  <div class="trip-infos">
-                      <p>${tripDate
-                        .getHours()
-                        .toString()
-                        .padStart(2, "0")}:${tripDate
-        .getMinutes()
-        .toString()
-        .padStart(2, "0")}</p>
-                  </div>
-                  <div class="trip-infos">
-                      <p>${trip.price}</p>
-                      <button class="book-btn" data-trip-id="${
-                        trip._id
-                      }">Book</button>
-                  </div>
-              `;
+      document.querySelector(".cart").innerHTML = `  
+            
+             <div class="trip">
+       <p> ${trip.departure}</p>
+       <p>→</p>
+       <p>${trip.arrival}</p>
+       <p></p>
+       <p>${trip.price}</p>
+       <button class="remove-btn" data-trip-id="${trip._id}">Remove</button>
+            </div>
+            
+            
+            
+            `;
     });
   }
 }
