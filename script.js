@@ -82,7 +82,10 @@ async function addToCart(tripId) {
     return;
   }
 
-  const response = await fetch(`${url}/${sessionId}/cart`, {
+  console.log(`Session ID: ${sessionId}`);
+  console.log(`Adding trip ID: ${tripId} to cart`);
+
+  const response = await fetch(`${url}/users/${sessionId}/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -90,7 +93,10 @@ async function addToCart(tripId) {
     body: JSON.stringify({ tripId }),
   });
 
+  console.log(`Response status: ${response.status}`);
+
   const data = await response.json();
+  console.log("Response data:", data);
 }
 
 searchButton.addEventListener("click", getTrips);
