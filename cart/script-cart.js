@@ -29,7 +29,7 @@ async function getTrips() {
     const user = await fetchUser.json();
     console.log("User data:", user);
 
-    cart = user.cart || []; // Stocke le panier
+    cart = user || []; // Stocke le panier
     displayCart(); // Met à jour l'affichage
     return cart;
   } catch (error) {
