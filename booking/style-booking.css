@@ -44,13 +44,19 @@
 
 .nav-links a {
   text-decoration: none;
-  color: rgb(49, 49, 49);
+  color: #007b5e;
   font-size: 16px;
   letter-spacing: 1px;
+  padding: 8px 18px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
-  color: #007b5e;
+  background-color: #f0f0f0;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .mainContainer {
