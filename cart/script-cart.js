@@ -71,7 +71,7 @@ function displayCart() {
        </div>
 
        <p></p>
-       <p>${trip.price}</p>
+       <p>${trip.price}€</p>
        <button class="remove-btn" data-trip-id="${trip._id}">Remove</button>
             </div>
             

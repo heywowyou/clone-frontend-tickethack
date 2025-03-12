@@ -101,6 +101,7 @@
 
 .remove-btn {
   gap: 5px;
+  margin-left: 20px;
   background-color: #ff0000;
   color: white;
   padding: 5px;
