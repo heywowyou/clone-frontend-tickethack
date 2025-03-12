@@ -79,3 +79,20 @@
   font-weight: 300;
   padding: 10px;
 }
+
+.trip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.trip-infos {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+}
