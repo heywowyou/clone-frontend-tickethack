@@ -1,13 +1,19 @@
 const url = "https://backend-ticket-hack-seven.vercel.app";
+let cart = []; // Initialisation
 
 async function getSessionId() {
-  const response = await fetch(`${url}/users/session`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${url}/users/session`);
+    const data = await response.json();
 
-  if (data && data.sessionId) {
-    return data.sessionId;
-  } else {
-    console.error("No session ID found.");
+    if (data && data.sessionId) {
+      return data.sessionId;
+    } else {
+      console.error("No session ID found.");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting session ID:", error);
     return null;
   }
 }
@@ -15,21 +21,17 @@ async function getSessionId() {
 async function getTrips() {
   try {
     console.log("Fetching trips...");
-    const fetchSession = await fetch(`${url}/users/session`);
-    const sessionData = await fetchSession.json();
+    const sessionId = await getSessionId();
 
-    if (!sessionData || !sessionData.sessionId) {
-      console.error("No session ID found.");
-      return null;
-    }
+    if (!sessionId) return null;
 
-    const sessionId = sessionData.sessionId;
-
-    const fetchUser = await fetch(`${url}/users/${sessionId}`);
+    const fetchUser = await fetch(`${url}/users/${sessionId}/cart`);
     const user = await fetchUser.json();
-    console.log(user);
+    console.log("User data:", user);
 
-    return sessionId;
+    cart = user.cart || []; // Stocke le panier
+    displayCart(); // Met à jour l'affichage
+    return cart;
   } catch (error) {
     console.error("Error fetching trips:", error);
     return null;
@@ -37,3 +39,35 @@ async function getTrips() {
 }
 
 getTrips();
+
+{
+  /* <div class="mainContainer">
+      <div class="cart">
+        <h2>No Tickets In your cart.</h2>
+        <h2>Why not plan a trip?</h2>
+      </div>
+    </div> */
+}
+
+function displayCart() {
+  if (cart.length === 0) {
+    console.log("Cart is empty");
+    document.querySelector(".mainContainer").innerHTML = `<div class="cart">
+        <h2>No Tickets In your cart.</h2>
+        <h2>Why not plan a trip?</h2>
+      </div>`;
+  } else {
+    document.querySelector(".mainContainer").innerHTML = "";
+    cart.forEach((trip) => {
+      document.querySelector(".mainContainer").innerHTML = `  
+            
+             <div class="cart">
+       
+            </div>
+            
+            
+            
+            `;
+    });
+  }
+}
