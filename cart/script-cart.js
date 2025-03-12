@@ -1,4 +1,4 @@
-/*const url = "https://backend-ticket-hack-seven.vercel.app";
+const url = "https://backend-ticket-hack-seven.vercel.app";
 const cartContainer = document.querySelector(".cart");
 
 // Function to get session ID
@@ -141,4 +141,4 @@ async function checkoutCart() {
   }
 }
 
-getCartItems(); */
+getCartItems();
