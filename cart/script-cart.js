@@ -118,10 +118,11 @@ function displayCart() {
   }
 }
 
-document
-  .querySelector(".remove-btn")
-  .addEventListener("click", async (event) => {
+document.querySelector(".cart").addEventListener("click", async (event) => {
+  // Vérifier si l'élément cliqué est un bouton "remove-btn"
+  if (event.target.classList.contains("remove-btn")) {
     event.preventDefault();
+
     const tripId = event.target.dataset.tripId;
     const sessionId = await getSessionId();
 
@@ -140,11 +141,14 @@ document
 
       if (data.message === "Trip removed from cart") {
         console.log("Trip supprimé avec succès !");
-        // Tu peux rediriger ou afficher un message de succès ici
+        // Recharger les données du panier après suppression
+        getTrips();
+        // Afficher un message de succès ou mettre à jour l'affichage si nécessaire
       } else {
         console.error("Erreur : ", data.message);
       }
     } catch (error) {
       console.error("Erreur lors de la suppression du trip", error);
     }
-  });
+  }
+});
