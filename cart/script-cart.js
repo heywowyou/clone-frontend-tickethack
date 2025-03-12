@@ -14,6 +14,7 @@ async function getSessionId() {
 
 async function getTrips() {
   try {
+    console.log("Fetching trips...");
     const fetchSession = await fetch(`${url}/users/session`);
     const sessionData = await fetchSession.json();
 
