@@ -5,61 +5,61 @@ const searchButton = document.getElementById("search");
 const infoBox = document.querySelector(".info-box");
 const url = "https://backend-ticket-hack-seven.vercel.app";
 
-function getTrips() {
-  if (
-    departureInput.value === "" ||
-    arrivalInput.value === "" ||
-    dateInput.value === ""
-  ) {
-    if (infoBox) {
-      infoBox.innerHTML = `<img src="images/notfound.png" alt="Not Found Icon" />
-             <div id="info-divider"></div>
-                                <p>No trips found.</p>`;
-    }
-    return;
-  }
+// Get trips and display them in the info box
+async function getTrips() {
+  try {
+    const response = await fetch(
+      `${url}/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`
+    );
+    const data = await response.json();
 
-  fetch(
-    `${url}/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+    console.log(data);
 
-      if (data.message === "No trips found.") {
-        infoBox.innerHTML = `
-            <img src="images/notFound.png" alt="Not Found Icon" />
-            <div id="info-divider"></div>
-            <p>No trips found.</p>
-        `;
-      } else {
-        infoBox.innerHTML = "";
-        document.querySelector(".info-box").scrollTop = 0;
-        data.trips.forEach((trip) => {
-          const tripDate = new Date(trip.date);
-          infoBox.innerHTML += `
-                    <div class="trip">
-                    <div class="trip-infos">
-                        <p> ${trip.departure}  </p>
-                        <p> > </p>
-                        <p> ${trip.arrival} </p>
-                    </div>
+    if (data.message === "No trips found.") {
+      infoBox.innerHTML = `
+              <img src="images/notfound.png" alt="Not Found Icon" />
+              <div id="info-divider"></div>
+              <p>No trips found.</p>
+          `;
+    } else {
+      infoBox.innerHTML = "";
+      document.querySelector(".info-box").scrollTop = 0;
 
-                    <div class="trip-infos">
-                       <p>${tripDate.getHours()}:${tripDate.getMinutes()}</p>
-                     </div> 
-                    <div class="trip-infos">
-                        <p> ${trip.price}€</p>
-                    </div>
-                        <button class="book-btn">Book</button>
-                    </div>
-                `;
-        });
+      for (const trip of data.trips) {
+        const tripDate = new Date(trip.date);
+        const tripElement = document.createElement("div");
+        tripElement.classList.add("trip");
+        tripElement.innerHTML = `
+                  <div class="trip-infos">
+                      <p>${trip.departure}</p>
+                      <p>→</p>
+                      <p>${trip.arrival}</p>
+                  </div>
+                  <div class="trip-infos">
+                      <p>${tripDate.getHours()}:${tripDate.getMinutes()}</p>
+                  </div>
+                  <div class="trip-infos">
+                      <p>${trip.price}</p>
+                      <button class="book-btn" data-trip-id="${
+                        trip._id
+                      }">Book</button>
+                  </div>
+              `;
+
+        infoBox.appendChild(tripElement);
       }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+
+      // Add event listeners to book buttons
+      document.querySelectorAll(".book-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const tripId = this.getAttribute("data-trip-id");
+          addToCart(tripId);
+        });
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching trips:", error);
+  }
 }
 
 // Get user session id
