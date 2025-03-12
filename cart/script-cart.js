@@ -63,9 +63,13 @@ function displayCart() {
       document.querySelector(".cart").innerHTML = `  
             
              <div class="trip">
-       <p> ${trip.departure}</p>
-       <p>→</p>
-       <p>${trip.arrival}</p>
+
+       <div class="trip">
+           <p> ${trip.departure}</p>
+           <p>→</p>
+           <p>${trip.arrival}</p>
+       </div>
+
        <p></p>
        <p>${trip.price}</p>
        <button class="remove-btn" data-trip-id="${trip._id}">Remove</button>
