@@ -101,6 +101,7 @@
 
 .remove-btn {
   gap: 5px;
+  margin-left: 20px;
   background-color: #ff0000;
   color: white;
   padding: 5px;
@@ -117,6 +118,24 @@
 
 .para {
   width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+.date {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+#price {
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;

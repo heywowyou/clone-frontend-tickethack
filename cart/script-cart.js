@@ -60,6 +60,7 @@ function displayCart() {
   } else {
     document.querySelector(".cart").innerHTML = "";
     cart.forEach((trip) => {
+      const tripDate = new Date(trip.date);
       document.querySelector(".cart").innerHTML += `  
             
              <div class="trip">
@@ -70,8 +71,14 @@ function displayCart() {
            <p>${trip.arrival}</p>
        </div>
 
-       <p></p>
-       <p>${trip.price}</p>
+        <div class="date">
+          <p>${tripDate.getHours().toString().padStart(2, "0")}:${tripDate
+        .getMinutes()
+        .toString()
+        .padStart(2, "0")}</p>
+        </div>
+
+       <p id="price">${trip.price}€</p>
        <button class="remove-btn" data-trip-id="${trip._id}">Remove</button>
             </div>
             
