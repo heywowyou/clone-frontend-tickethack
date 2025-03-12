@@ -58,51 +58,62 @@ function displayCart() {
         <h2>Why not plan a trip?</h2>
       </div>`;
   } else {
+    // Vider le contenu actuel
     document.querySelector(".cart").innerHTML = "";
     document.querySelector(".mainContainer").innerHTML = `
-    
-    
-    <div class="cart"> 
-    <h1 id="title">My cart</h1>
-    </div>`;
+      <div class="cart"> 
+        <h1 id="title">My cart</h1>
+      </div>`;
+
+    let totalPrice = 0; // Variable pour stocker le total du panier
+
+    // Créer les éléments du panier et calculer le total
     cart.forEach((trip) => {
       const tripDate = new Date(trip.date);
-      document.querySelector(".cart").innerHTML += `  
-            
-             <div class="trip">
 
-       <div class="para">
-           <p> ${trip.departure}</p>
-           <p>→</p>
-           <p>${trip.arrival}</p>
-       </div>
+      // Créer un élément div pour chaque voyage
+      const tripDiv = document.createElement("div");
+      tripDiv.classList.add("trip");
 
+      tripDiv.innerHTML = `
+        <div class="para">
+          <p> ${trip.departure}</p>
+          <p>→</p>
+          <p>${trip.arrival}</p>
+        </div>
+  
         <div class="date">
           <p>${tripDate.getHours().toString().padStart(2, "0")}:${tripDate
         .getMinutes()
         .toString()
         .padStart(2, "0")}</p>
         </div>
-
-       <p id="price">${trip.price}€</p>
-       <button class="remove-btn" data-trip-id="${trip._id}">X</button>
-            </div>
-
   
-            
-            
-            
-            `;
+        <p id="price">${trip.price}€</p>
+        <button class="remove-btn" data-trip-id="${trip._id}">X</button>
+      `;
+
+      // Ajouter l'élément div au DOM
+      document.querySelector(".cart").appendChild(tripDiv);
+
+      // Ajouter le prix au total
+      totalPrice += trip.price;
     });
-    document.querySelector(".cart").innerHTML += `
-    <div class="purchase">
-            <div class="total">
-              <p>Total:</p>
-              <p id="total">${trip.price}</p>
-            </div>
 
-            <button class="purchase-btn">Purchase</button>  
+    // Ajouter le total et le bouton de commande
+    const purchaseDiv = document.createElement("div");
+    purchaseDiv.classList.add("purchase");
 
-            </div>`;
+    purchaseDiv.innerHTML = `
+      <div class="total">
+        <p>Total:</p>
+        <p id="total">${totalPrice}€</p>
+      </div>
+  
+      <button class="purchase-btn">Purchase</button>
+    `;
+
+    // Ajouter l'élément du total au DOM
+    document.querySelector(".cart").appendChild(purchaseDiv);
   }
 }
