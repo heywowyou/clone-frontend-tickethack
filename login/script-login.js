@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Création du compte en cours...");
 
         try {
-          const fetchData = await fetch("${url}/users/CreateAccount", {
+          const fetchData = await fetch(`${url}/users/CreateAccount`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
