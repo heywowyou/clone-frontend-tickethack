@@ -53,7 +53,7 @@ async function getTrips() {
           .padStart(2, "0")}</p>
                   </div>
                   <div class="trip-infos">
-                      <p>${trip.price}</p>
+                      <p>${trip.price} €</p>
                       <button class="book-btn" data-trip-id="${
                         trip._id
                       }">Book</button>
