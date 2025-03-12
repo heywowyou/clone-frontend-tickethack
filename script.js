@@ -132,8 +132,8 @@ const suggestionsContainer = document.getElementById("suggestions-container");
 
 // Fonction pour récupérer les suggestions
 async function getSuggestions(query) {
-  // Remplacer par votre propre logique pour récupérer les suggestions
-  const urls = `${url}/trips`;
+  // Utiliser 'query' dans la logique pour récupérer les suggestions
+  const urls = `${url}/trips?search=${query}`; // Ajoute le paramètre de recherche à l'URL
   const response = await fetch(urls);
   const data = await response.json();
 
