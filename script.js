@@ -124,3 +124,60 @@ async function addToCart(tripId) {
 }
 
 searchButton.addEventListener("click", getTrips);
+
+// Fonction pour rechercher des suggestions
+
+const searchInput = document.getElementById("search-input");
+const suggestionsContainer = document.getElementById("suggestions-container");
+
+// Fonction pour récupérer les suggestions
+async function getSuggestions(query) {
+  // Remplacer par votre propre logique pour récupérer les suggestions
+  const urls = `${url}/trips`;
+  const response = await fetch(urls);
+  const data = await response.json();
+
+  return data.arrival; // Retourner les suggestions
+}
+
+// Fonction pour afficher les suggestions
+function displaySuggestions(suggestions) {
+  // Vider les anciennes suggestions
+  suggestionsContainer.innerHTML = "";
+
+  // Si aucune suggestion, masquer le conteneur
+  if (suggestions.length === 0) {
+    suggestionsContainer.style.display = "none";
+    return;
+  }
+
+  // Afficher les nouvelles suggestions
+  suggestions.forEach((suggestion) => {
+    const suggestionItem = document.createElement("div");
+    suggestionItem.classList.add("suggestion-item");
+    suggestionItem.textContent = suggestion;
+    suggestionItem.addEventListener("click", () => {
+      searchInput.value = suggestion; // Mettre la suggestion dans le champ de recherche
+      suggestionsContainer.style.display = "none"; // Cacher les suggestions
+    });
+    suggestionsContainer.appendChild(suggestionItem);
+  });
+
+  // Afficher le conteneur des suggestions
+  suggestionsContainer.style.display = "block";
+}
+
+// Ajouter un écouteur d'événement pour la saisie du texte
+searchInput.addEventListener("input", async () => {
+  const query = searchInput.value.trim();
+
+  // Si la recherche est vide, masquer les suggestions
+  if (!query) {
+    suggestionsContainer.style.display = "none";
+    return;
+  }
+
+  // Récupérer et afficher les suggestions
+  const suggestions = await getSuggestions(query);
+  displaySuggestions(suggestions);
+});
