@@ -74,6 +74,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 20px;
 }
 
 .cart h2 {
@@ -105,7 +106,7 @@
   margin-left: 20px;
   background-color: #469e86;
   color: white;
-  padding: 5px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   font-size: 0.8rem;
