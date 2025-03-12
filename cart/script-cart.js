@@ -114,41 +114,40 @@ function displayCart() {
     `;
 
     // Ajouter l'élément du total au DOM
-    document.querySelector(".mainContainer").appendChild(purchaseDiv);
-  }
+    document.querySelectorAll(".remove-btn").forEach((button) => {
+      button.addEventListener("click", async function () {
+        cobsole.log("Bouton supprimé cliqué !");
+        const tripId = button.dataset.tripId; // Récupérer l'ID du voyage depuis le bouton
+        const sessionId = await getSessionId();
 
-  document.querySelectorAll(".remove-btn").forEach((button) => {
-    button.addEventListener("click", async function () {
-      const sessionId = await getSessionId();
+        if (!sessionId) return;
 
-      if (!sessionId) return;
+        try {
+          const response = await fetch(
+            `${url}/users/${sessionId}/cart/${tripId}`,
+            {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
 
-      try {
-        const response = await fetch(
-          `${url}/users/${sessionId}/cart/${tripId}`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
+          const data = await response.json();
+          console.log("Données de la réponse : ", data);
+
+          if (data.message === "Trip removed from cart") {
+            console.log("Trip supprimé avec succès !");
+            // Mettre à jour localement le panier sans faire une nouvelle requête
+            cart = cart.filter((trip) => trip._id !== tripId); // Supprime le trip du tableau
+            displayCart(); // Met à jour l'affichage
+          } else {
+            console.error("Erreur : ", data.message);
           }
-        );
-
-        const data = await response.json();
-        console.log("Données de la réponse : ", data);
-
-        if (data.message === "Trip removed from cart") {
-          console.log("Trip supprimé avec succès !");
-          // Mettre à jour localement le panier sans faire une nouvelle requête
-          cart = cart.filter((trip) => trip._id !== tripId); // Supprime le trip du tableau
-          displayCart(); // Met à jour l'affichage
-        } else {
-          console.error("Erreur : ", data.message);
+        } catch (error) {
+          console.error("Erreur lors de la suppression du trip", error);
         }
-      } catch (error) {
-        console.error("Erreur lors de la suppression du trip", error);
-      }
+      });
     });
-  });
-
- 
+  }
+}
