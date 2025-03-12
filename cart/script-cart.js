@@ -41,20 +41,26 @@ async function getTrips() {
 
 getTrips();
 
-function displayCart() {
-  const cartContainer = document.querySelector(".mainContainer");
+{
+  /* <div class="mainContainer">
+      <div class="cart">
+        <h2>No Tickets In your cart.</h2>
+        <h2>Why not plan a trip?</h2>
+      </div>
+    </div> */
+}
 
+function displayCart() {
   if (cart.length === 0) {
     console.log("Cart is empty");
-    cartContainer.innerHTML = `<div class="cart">
+    document.querySelector(".mainContainer").innerHTML = `<div class="cart">
         <h2>No Tickets In your cart.</h2>
         <h2>Why not plan a trip?</h2>
       </div>`;
   } else {
     // Vider le contenu actuel
-    const cartElement = document.querySelector(".cart");
-    cartElement.innerHTML = "";
-    cartContainer.innerHTML = `
+    document.querySelector(".cart").innerHTML = "";
+    document.querySelector(".mainContainer").innerHTML = `
       <div class="cart"> 
         <h1 id="title">My cart</h1>
       </div>`;
@@ -88,7 +94,7 @@ function displayCart() {
       `;
 
       // Ajouter l'élément div au DOM
-      cartElement.appendChild(tripDiv);
+      document.querySelector(".cart").appendChild(tripDiv);
 
       // Ajouter le prix au total
       totalPrice += trip.price;
@@ -108,7 +114,7 @@ function displayCart() {
     `;
 
     // Ajouter l'élément du total au DOM
-    cartContainer.appendChild(purchaseDiv);
+    document.querySelector(".mainContainer").appendChild(purchaseDiv);
   }
 }
 
@@ -135,9 +141,9 @@ document.querySelector(".cart").addEventListener("click", async (event) => {
 
       if (data.message === "Trip removed from cart") {
         console.log("Trip supprimé avec succès !");
-        // Mettre à jour localement le panier sans faire une nouvelle requête
-        cart = cart.filter((trip) => trip._id !== tripId); // Supprime le trip du tableau
-        displayCart(); // Met à jour l'affichage
+        // Recharger les données du panier après suppression
+        getTrips();
+        // Afficher un message de succès ou mettre à jour l'affichage si nécessaire
       } else {
         console.error("Erreur : ", data.message);
       }
