@@ -1,4 +1,4 @@
-const url = "https://backend-ticket-hack-seven.vercel.app";
+const url = "https://clone-backend-tickethack.vercel.app";
 const bookingContainer = document.querySelector(".booking");
 
 async function getSessionId() {
