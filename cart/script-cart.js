@@ -58,7 +58,7 @@ function displayCart() {
         <h2>Why not plan a trip?</h2>
       </div>`;
   } else {
-    document.querySelector(".mainContainer").innerHTML = "";
+    document.querySelector(".cart").innerHTML = "";
     cart.forEach((trip) => {
       document.querySelector(".cart").innerHTML = `  
             
