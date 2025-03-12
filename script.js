@@ -7,6 +7,10 @@ const url = "https://backend-ticket-hack-seven.vercel.app";
 
 async function getTrips() {
   try {
+    if (!departure || !arrival || !date) {
+      console.log("Please enter valid departure, arrival, and date.");
+      return;
+    }
     const response = await fetch(
       `${url}/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`
     );
