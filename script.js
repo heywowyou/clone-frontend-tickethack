@@ -12,7 +12,7 @@ function getTrips() {
     dateInput.value === ""
   ) {
     if (infoBox) {
-      infoBox.innerHTML = `<img src="images/notFound.png" alt="Not Found Icon" />
+      infoBox.innerHTML = `<img src="images/notfound.png" alt="Not Found Icon" />
              <div id="info-divider"></div>
                                 <p>No trips found.</p>`;
     }
