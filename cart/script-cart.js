@@ -30,7 +30,7 @@ async function getTrips() {
     console.log("User data:", user);
 
     cart = user || []; // Stocke le panier
-    console.log("nv tableau; ", cart);
+    console.log("nv tableau; ", cart.cart);
     displayCart(); // Met à jour l'affichage
     return cart;
   } catch (error) {
