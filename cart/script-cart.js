@@ -220,7 +220,7 @@ function previousCode() {
       `;
 
         // Ajouter l'élément div au DOM
-        document.querySelector(".cart").appendChild(tripDiv);
+        document.querySelector(".cart").appendChild(".mainContainer");
 
         // Ajouter le prix au total
         totalPrice += trip.price;
