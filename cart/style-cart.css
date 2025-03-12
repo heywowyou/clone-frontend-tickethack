@@ -82,6 +82,7 @@
 }
 
 .trip {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +100,7 @@
 }
 
 .remove-btn {
+  gap: 5px;
   background-color: #ff0000;
   color: white;
   padding: 5px;
@@ -114,6 +116,7 @@
 }
 
 .para {
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
