@@ -116,7 +116,7 @@ function displayCart() {
     // Ajouter l'élément du total au DOM
     document.querySelectorAll(".remove-btn").forEach((button) => {
       button.addEventListener("click", async function () {
-        cobsole.log("Bouton supprimé cliqué !");
+        console.log("Bouton supprimé cliqué !");
         const tripId = button.dataset.tripId; // Récupérer l'ID du voyage depuis le bouton
         const sessionId = await getSessionId();
 
