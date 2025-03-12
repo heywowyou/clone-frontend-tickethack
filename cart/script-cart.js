@@ -87,6 +87,16 @@ function displayCart() {
        <p id="price">${trip.price}€</p>
        <button class="remove-btn" data-trip-id="${trip._id}">X</button>
             </div>
+
+            <div class="purchase">
+            <div class="total">
+              <p>Total:</p>
+              <p id="total">${trip.price}</p>
+            </div>
+            
+            <button class="purchase-btn">Purchase</button>  
+
+            </div>
             
             
             
