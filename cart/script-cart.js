@@ -60,7 +60,7 @@ function displayCart() {
   } else {
     document.querySelector(".cart").innerHTML = "";
     cart.forEach((trip) => {
-      document.querySelector(".cart").innerHTML = `  
+      document.querySelector(".cart").innerHTML += `  
             
              <div class="trip">
 
