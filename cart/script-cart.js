@@ -141,9 +141,9 @@ document.querySelector(".cart").addEventListener("click", async (event) => {
 
       if (data.message === "Trip removed from cart") {
         console.log("Trip supprimé avec succès !");
-        // Recharger les données du panier après suppression
-        getTrips();
-        // Afficher un message de succès ou mettre à jour l'affichage si nécessaire
+        // Mettre à jour localement le panier sans faire une nouvelle requête
+        cart = cart.filter((trip) => trip._id !== tripId); // Supprime le trip du tableau
+        displayCart(); // Met à jour l'affichage
       } else {
         console.error("Erreur : ", data.message);
       }
