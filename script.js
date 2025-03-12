@@ -87,7 +87,7 @@ async function addToCart(tripId) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ tripId }),
+    body: JSON.stringify(tripId),
   });
 
   const data = await response.json();
