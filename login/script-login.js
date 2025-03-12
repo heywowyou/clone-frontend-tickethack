@@ -1,4 +1,5 @@
-const url = "https://backend-ticket-hack-seven.vercel.app";
+const url =
+  "https://backend-ticket-hack-2owmwu93m-warrens-projects-faef4270.vercel.app";
 
 document.addEventListener("DOMContentLoaded", () => {
   let check = true;

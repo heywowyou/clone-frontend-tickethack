@@ -3,7 +3,8 @@ const arrivalInput = document.getElementById("arrivalInput");
 const dateInput = document.getElementById("dateInput");
 const searchButton = document.getElementById("search");
 const infoBox = document.querySelector(".info-box");
-const url = "https://backend-ticket-hack-seven.vercel.app";
+const url =
+  "https://backend-ticket-hack-2owmwu93m-warrens-projects-faef4270.vercel.app";
 
 function getTrips() {
   if (
