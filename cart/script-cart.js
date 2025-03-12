@@ -122,7 +122,7 @@ document.querySelector(".cart").addEventListener("click", async (event) => {
   // Vérifier si l'élément cliqué est un bouton "remove-btn"
   if (event.target.classList.contains("remove-btn")) {
     event.preventDefault();
-
+    console.log("supression");
     const tripId = event.target.dataset.tripId;
     const sessionId = await getSessionId();
 
