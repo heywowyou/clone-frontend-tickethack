@@ -3,6 +3,7 @@ const arrivalInput = document.getElementById("arrivalInput");
 const dateInput = document.getElementById("dateInput");
 const searchButton = document.getElementById("search");
 const infoBox = document.querySelector(".info-box");
+const url = "https://backend-ticket-hack-seven.vercel.app";
 
 function getTrips() {
   if (
@@ -19,7 +20,7 @@ function getTrips() {
   }
 
   fetch(
-    `http://localhost:3000/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`
+    `${url}/trips/${departureInput.value}/${arrivalInput.value}/${dateInput.value}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -63,7 +64,7 @@ function getTrips() {
 
 // Get user session id
 async function getSessionId() {
-  const response = await fetch("http://localhost:3000/users/session");
+  const response = await fetch("${url}/users/session");
   const data = await response.json();
 
   if (data && data.sessionId) {
@@ -82,7 +83,7 @@ async function addToCart(tripId) {
     return;
   }
 
-  const response = await fetch(`http://localhost:3000/${sessionId}/cart`, {
+  const response = await fetch(`${url}/${sessionId}/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

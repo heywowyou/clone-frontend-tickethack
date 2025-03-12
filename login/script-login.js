@@ -1,3 +1,5 @@
+const url = "https://backend-ticket-hack-seven.vercel.app";
+
 document.addEventListener("DOMContentLoaded", () => {
   let check = true;
 
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Connexion en cours...");
 
         try {
-          const fetchData = await fetch("http://localhost:3000/users/login", {
+          const fetchData = await fetch(`${url}/users/Login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -92,16 +94,13 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Création du compte en cours...");
 
         try {
-          const fetchData = await fetch(
-            "http://localhost:3000/users/CreateAccount",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(accountData),
-            }
-          );
+          const fetchData = await fetch("${url}/users/CreateAccount", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(accountData),
+          });
 
           const data = await fetchData.json();
           console.log("Données de la réponse : ", data);
