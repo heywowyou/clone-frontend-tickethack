@@ -117,3 +117,38 @@ function displayCart() {
     document.querySelector(".mainContainer").appendChild(purchaseDiv);
   }
 }
+
+document.querySelector(".cart").addEventListener("click", async (event) => {
+  // Vérifier si l'élément cliqué est un bouton "remove-btn"
+  if (event.target.classList.contains("remove-btn")) {
+    event.preventDefault();
+
+    const tripId = event.target.dataset.tripId;
+    const sessionId = await getSessionId();
+
+    if (!sessionId) return;
+
+    try {
+      const response = await fetch(`${url}/users/${sessionId}/cart/${tripId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log("Données de la réponse : ", data);
+
+      if (data.message === "Trip removed from cart") {
+        console.log("Trip supprimé avec succès !");
+        // Mettre à jour localement le panier sans faire une nouvelle requête
+        cart = cart.filter((trip) => trip._id !== tripId); // Supprime le trip du tableau
+        displayCart(); // Met à jour l'affichage
+      } else {
+        console.error("Erreur : ", data.message);
+      }
+    } catch (error) {
+      console.error("Erreur lors de la suppression du trip", error);
+    }
+  }
+});
