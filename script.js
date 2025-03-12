@@ -64,7 +64,7 @@ function getTrips() {
 
 // Get user session id
 async function getSessionId() {
-  const response = await fetch("${url}/users/session");
+  const response = await fetch(`${url}/users/session`);
   const data = await response.json();
 
   if (data && data.sessionId) {
