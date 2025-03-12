@@ -58,12 +58,21 @@ function displayCart() {
         <h2>Why not plan a trip?</h2>
       </div>`;
   } else {
-    document.querySelector(".mainContainer").innerHTML = "";
+    document.querySelector(".cart").innerHTML = "";
     cart.forEach((trip) => {
-      document.querySelector(".mainContainer").innerHTML = `  
+      document.querySelector(".cart").innerHTML += `  
             
-             <div class="cart">
-       
+             <div class="trip">
+
+       <div class="para">
+           <p> ${trip.departure}</p>
+           <p>→</p>
+           <p>${trip.arrival}</p>
+       </div>
+
+       <p></p>
+       <p>${trip.price}</p>
+       <button class="remove-btn" data-trip-id="${trip._id}">Remove</button>
             </div>
             
             
